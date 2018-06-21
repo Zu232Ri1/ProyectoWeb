@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-12 col-md-4">
        <div class="d-flex  justify-content-center">
-           <p>LOGO</p>
+           <p id="logo">LOGO</p>
        </div>
 	</div>
 	<div class="col-12 col-md-4">
