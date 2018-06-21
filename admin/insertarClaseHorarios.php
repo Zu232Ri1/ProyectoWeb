@@ -13,7 +13,7 @@ if(isset($_COOKIE['nombreClase'])){
      $nombre=$_COOKIE['nombreClase'];
 }
 $id=ControladorClase::getIdUltimo();
-echo $id." ".$nombre." ".$sala;
+//echo $id." ".$nombre." ".$sala;
 if(isset($_POST['btnInsertarClaseHoras'])){
     $o=new Actividades();
     $o->setIdSala($sala);
@@ -24,7 +24,7 @@ if(isset($_POST['btnInsertarClaseHoras'])){
     $exiteClase=ControladorClase::existe($o);
 
     if(!$exiteClase){
-       echo "no existe";
+       //echo "no existe";
        $ok=ControladorClase::setActividad($o);
        if($ok){
           $msgU="HORARIO PARA ESE DIA CORRECTO CORRECTAMENTE";
@@ -53,13 +53,13 @@ if(isset($_POST['btnInsertarClaseHoras'])){
         }
 
     ?>	
+    <script type="text/javascript" src="../js/validarClase.js"></script>  
  <script type="text/javascript" src="../js/flecha.js"></script> 
-  <script type="text/javascript" src="../js/validarClase.js"></script>  
+  
       
 		
 		
-   <form action="<?php echo $_SERVER['PHP_SELF'] ?>?op=insertarClaseHorarios" method="post" id="formClases"
-   	enctype="multipart/form-data">
+   <form action="<?php echo $_SERVER['PHP_SELF'] ?>?op=insertarClaseHorarios" method="post" id="formClases" enctype="multipart/form-data">
    <div class="row pt-5">
       
 		<div class="col-12 col-md-6">

@@ -4,8 +4,14 @@ $monitores=ControladorMoni::getAll();
 //$mon=ControladorMoni::getMoni('37984523T');
 //var_dump($monitores);
 //var_dump($mon->getListaUsuarios())
+//$monitores=array();
+$msg="";
+if(count($monitores)==0){
+       $msg="NO HAY MONITORES QUE MOSTRAR";
+  	   $clase="btn btn-outline-danger";
+}
 if(count($monitores)%2==0){
-   echo "Par";
+   //echo "Par";
    $monMitad=count($monitores)/2;
    $a=$monMitad;
    $b=$monMitad;   
@@ -14,7 +20,7 @@ if(count($monitores)%2==0){
 	$monMitad=count($monitores)/2;
 	$a=ceil($monMitad);
     $b=floor($monMitad);
-    echo $a." ".$b;
+   // echo $a." ".$b;
 }
 ?>
 <div class="container-fluid" id="cuerpo">
@@ -34,7 +40,12 @@ if(count($monitores)%2==0){
                				
 		</div>
 		
+         <?php 
+        if($msg!=""){
+     	       	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msg<span></div>";
+        }
 
+    ?>	
 		<div class="row pt-5">
       
 			<div class="col-12 col-md-6">
@@ -57,7 +68,7 @@ if(count($monitores)%2==0){
                    ?>
 			       <div class="row">
 				      <div class='col-12 col-md-6'>
-					     <img src="<?php echo $ruta; ?>" alt='monitor' class="round-circle"/>
+					     <img src="<?php echo $ruta; ?>" alt='Gimnasio low cost' class="round-circle"/>
 					  </div>
 					  <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">
@@ -102,7 +113,7 @@ if(count($monitores)%2==0){
                    ?>
 			       <div class="row">
 				      <div class='col-12 col-md-6'>
-					     <img src="<?php echo $ruta; ?>" alt='monitor' class="round-circle"/>
+					     <img src="<?php echo $ruta; ?>" alt='Gimnasio low cost' class="round-circle"/>
 					  </div>
 					  <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">
@@ -131,13 +142,13 @@ if(count($monitores)%2==0){
 		</div>
 		
   </div>
-  
+  <?php if($msg==""){ ?>
      <div class="d-flex justify-content-between">
 	    <a href="#" ><span class="fa fa-angle-double-left fa-3x"></span></a>
 		<a href="#" ><span class="fa fa-angle-double-right fa-3x"></span></a>
 	 
 	 </div>
   
- 
+ <?php } ?>
 
 </div>   
