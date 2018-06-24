@@ -5,22 +5,33 @@ $productos=ControladoPro::getAll();
 
 //var_dump($productos);
 
-
+$msgP="";
+if(count($productos)==0){
+   $msgP="NO HAY PRODUCTOS";
+   $clase="btn btn-outline-danger";
+}else if($productos==null){
+	 $msgP="FALLO EN BD PRODUCTOS";
+   $clase="btn btn-outline-danger";
+}
  ?>
-<div class="container-fluid">
+<div class="container-fluid" id="cuerpo">
    <h1 class="text-center">PRODUCTOS</h1>
    
 		   
 		    <?php 
-                
+                 if($msgP!=""){
+     	       	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msgP<span></div>";
+       				 }
                   $ruta="img/proteina.jpg";
 
-                
+                if($msgP==""){
                  foreach ($productos as $key => $o) {
                      if($o->getFotoRuta()!==null){
-                     	 echo $o->getFotoRuta();
-                     	 $ruta=$o->getFotoRuta();
+                     	// echo $o->getFotoRuta();
+                     	 $ruta=substr($o->getFotoRuta(),3);
                 	         
+                      }else{
+                      	 $ruta="img/proteina.jpg";
                       }
 
 
@@ -40,35 +51,23 @@ $productos=ControladoPro::getAll();
                  	echo "</div>";
 
                  }
+                   echo "<div class='d-flex  justify-content-center'>
+                          <ul class='pagination'>
+							<li class='page-item'><a class='page-link' href='#'>Previous</a></li>
+							<li class='page-item'><a class='page-link' href='#'>1</a></li>
+							<li class='page-item'><a class='page-link' href='#'>2</a></li>
+							<li class='page-item'><a class='page-link' href='#'>3</a></li>
+							<li class='page-item'><a class='page-link' href='#'>Next</a></li>
+			   			 </ul>
+         			  </div>";
 
-
+              }
 
 
 
 		     ?>
-			       <div class="row">
-				      <div class='col-12 col-md-4'>
-					     <img src="img/proteina.jpg" alt='producto'/>
-					  </div>
-					  <div class='col-12 col-md-8'>
-					     <h1>Titulo de Producto 1</h1>
-						 <p>Descripcion del prodcuto asdfasdfasdfasdfasdfasdfsdafsdafasdf asd as f as</p>
-						 <footer class="footer-main">
-						    <span>Precio</span><span><a href='#' >Detalles</a></span>
-						 </footer>
-						 
-					  </div>
-				   </div>
+			       
 				   
 				   
-				   
-				   <div class="d-flex  justify-content-center">
-					 <ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">Next</a></li>
-					</ul>
-                  </div>	
+				 
 </div>

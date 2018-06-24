@@ -67,6 +67,8 @@ window.onload = function (argument) {
 		document.getElementById("calendar").getElementsByTagName("tbody")[0].innerHTML=resultado;
 	}
 	 mostrarCalendario(actual.getFullYear(),actual.getMonth()+1);
+
+	
 }
 
 

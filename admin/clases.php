@@ -4,8 +4,9 @@ $clases=ControladorClase::getAll();
 $clase=ControladorClase::getClase(1);
 //var_dump($clases)
 //var_dump($clase);
+//$clases=array();
 if(count($clases)%2==0){
-   echo "Par";
+   //echo "Par";
    $claseMitad=count($clases)/2;
    $a=$claseMitad;
    $b=$claseMitad;   
@@ -14,9 +15,13 @@ if(count($clases)%2==0){
 	$claseMitad=count($clases)/2;
 	$a=ceil($claseMitad);
     $b=floor($claseMitad);
-    echo $a." ".$b;
+    //echo $a." ".$b;
 }
-$msg='';
+$msgU='';
+if(count($clases)==0){
+       $msgU="NO HAY CLASES QUE MOSTRAR";
+  	   $clase="btn btn-outline-danger";
+}
 
 if(isset($_GET['msg'])){
    $msg=$_GET['msg'];
@@ -33,12 +38,7 @@ if(isset($_GET['msg'])){
  ?>
 
 <div class="container-fluid" id="cuerpo">
-    <?php 
-        if($msg!=""){
-     	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msgU<span></div>";
-        }
-
-    ?>
+   
       
 		<div class="d-flex justify-content-between pt-5">
 		     	<div>
@@ -53,7 +53,12 @@ if(isset($_GET['msg'])){
                 </div>	
                				
 		</div>
-		
+		 <?php 
+        if($msgU!=""){
+     	       	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msgU<span></div>";
+        }
+
+    ?>	
 
 		<div class="row pt-5">
       
@@ -76,7 +81,7 @@ if(isset($_GET['msg'])){
 				  	?>
 			       <div class="row">
 				      <div class='col-12 col-md-6'>
-					     <img src="<?php echo $ruta; ?>" alt='clase' class="round-circle"/>
+					     <img src="<?php echo $ruta; ?>" alt='Gimnasio low cost' class="round-circle"/>
 					  </div>
 					  <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">
@@ -119,7 +124,7 @@ if(isset($_GET['msg'])){
 		       	 	 ?>
 			         <div class="row">
 				      <div class='col-12 col-md-6'>
-					     <img src="<?php echo $ruta; ?>" alt='clase' class="round-circle"/>
+					     <img src="<?php echo $ruta; ?>" alt='Gimnasio low cost' class="round-circle"/>
 					  </div>
 					  <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">
@@ -148,13 +153,13 @@ if(isset($_GET['msg'])){
 		</div>
 		
   </div>
-  
+  <?php if($msg==""){ ?>
      <div class="d-flex justify-content-between">
 	    <a href="#" ><span class="fa fa-angle-double-left fa-3x"></span></a>
 		<a href="#" ><span class="fa fa-angle-double-right fa-3x"></span></a>
 	 
 	 </div>
-  
+  <?php } ?>
  
 
 </div>   

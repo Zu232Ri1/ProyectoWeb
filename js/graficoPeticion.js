@@ -1,5 +1,4 @@
-
- $(document).ready(function(){
+$(document).ready(function(){
              var popCanvas = $("#grafico");
 			 
 			/* var barChart = new Chart(popCanvas, {
@@ -26,25 +25,45 @@
 			}
         });*/
 		
-
+         var idDni = $('#dniPro').val();
+         console.log(idDni);
 		 $.ajax({
-          url: '../clases/progresoUsuario.php', // url del recurso
+		 	//url: './progresoUsuario.php',
+          url: 'http://localhost/GymGo/clases/progresoUsuario.php', // url del recurso
           type: "get", // podría ser get, post, put o delete.
-          data: {}, // datos a pasar al servidor, en caso de necesitarlo
+          data: {id:idDni}, // datos a pasar al servidor, en caso de necesitarlo
          success: function (r) {
              // aquí trataríamos la respuesta del servidor
           // alert(r);
            var obj = JSON.parse(r);
            console.log(obj.length);
            console.log(" peticion "+obj);
-          
+           var error=$('#errorP');
+        	error.hide();
+
+           dibujarGrafico(obj);
+
+        },error : function(status,response){
+        	var mensaje=$('#errorP');
+        	console.log(mensaje);
+        	mensaje.html("ERROR EN LA PETICION INTERNO");
 
         }
         
        });
 
-      console.log('estoy en el js');
-		var date=new Date();
+     
+
+
+
+      function dibujarGrafico (pesosFecha) {
+      	 console.log('Dibujando Grafico -> '+pesosFecha);
+      	 var pesosMese = [0,0,0,0,0,0,0,0,0,0,0,0];
+      	 for(let i=0;i<pesosFecha.length;i++){
+      	 	var mes = new Date(pesosFecha[i].fecha).getMonth();
+      	 	pesosMese[mes]=pesosFecha[i].peso;
+      	 }
+      	var date=new Date();
 		var ano = date.getFullYear();
          var labelUsu=ano+" Peso ";
 		Chart.defaults.global.defaultFontFamily = "Lato";
@@ -54,7 +73,7 @@
 		labels: meses,
 		datasets: [{
 			label: labelUsu,
-			data: [67.2, 59.2, 75.2, 50.12, 50.3, 55.3, 50.1,50.2,42.2,],
+			data: pesosMese,
 			lineTension: 0,
 			fill: false,
 			borderColor: 'orange',
@@ -88,6 +107,8 @@
 			});
 			 
            
+      }
+		
          
      
 		  

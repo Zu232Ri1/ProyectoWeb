@@ -2,11 +2,11 @@
 include('../clases/Utilidades.php');
 include('../clases/ControladorEjercicio.php');
 
-
+$msg="";
 if(isset($_POST['enviarEjrcicioInsertar'])){
    $o=ControladorEjercicio::getEjercicioNombre($_POST['nombre']);
 	if($o==null){
-		echo "no existe";
+		//echo "no existe";
 		$o=new Ejercicios();
     	$o->setIdMusculo($_POST['musculo']);
     	$o->setNombre($_POST['nombre']);
@@ -26,12 +26,17 @@ if(isset($_POST['enviarEjrcicioInsertar'])){
 
     	$ok=ControladorEjercicio::setEjercicio($o);
     	if($ok){
-    		echo "inserto";
-    	}else{
-    		echo "no inserto";
-    	}     
+
+    		$msg="EJERCICIO REGISTRADO";
+  	   $clase="btn btn-success";
+    }else{
+    	$msg="FALLO EN EL REGISTRO EJERCICIO";
+  	   $clase="btn btn-outline-danger";
+    }
+    	     
 	}else{
-		echo "existe";
+		$msg="EJERCICIO YA EXISTE";
+  	   $clase="btn btn-outline-danger";
 	}
 
 }
@@ -39,7 +44,12 @@ if(isset($_POST['enviarEjrcicioInsertar'])){
  ?>
 <div class="container-fluid" id="cuerpo">
                      
-      
+       <?php 
+        if($msg!=""){
+     	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msg<span></div>";
+        }
+
+    ?>	
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>?op=insertarEjercicio" method="post" enctype="multipart/form-data">
    <div class="row pt-5">
       
@@ -70,7 +80,7 @@ if(isset($_POST['enviarEjrcicioInsertar'])){
             
            <div class="form-group">
 				<label for="ejercicio">Foto Ejercicio</label>
-				<input type="file" class="form-control" id="ejercicio" required name="imagen">
+				<input type="file" class="form-control" id="ejercicio" required="true" name="imagen">
 			</div>
             <div class="form-group">
 				

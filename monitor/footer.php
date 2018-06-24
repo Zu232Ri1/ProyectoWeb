@@ -5,16 +5,15 @@
 	</div>
 	<div class="col-12 col-md-4">
        <div class="d-flex  justify-content-center">
-           <p>LOGO</p>
+           <p id="logo">LOGO</p>
        </div>
 	</div>
 	<div class="col-12 col-md-4">
        <div class="d-flex  justify-content-end">
           <div>
-		      <form action="" method="post">
-				<span>Listar usuarios</span>
-				<input type="submit" value="Listar" />
-			 </form>
+		       <div>
+		        <a href="#"><span class="fa fa-print fa-3x"></span></a>
+		 		</div>
 		 </div>
        </div>	   
 	</div>

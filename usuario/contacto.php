@@ -2,22 +2,36 @@
 include('../clases/Utilidades.php');
 include('../clases/ControladorMoni.php');
 
-//$idCliente=$_SERVER['id'];
-$idCliente='14983946K';
+$idCliente=$_SESSION['id'];
+//$idCliente='14983946K';
 $user=ControladorMoni::getUsu($idCliente);
 $mon = ControladorMoni::getMoni($user->getMonitor());
-
+$msg="";
 if(isset($_POST['btnContacto'])){
 	$asunto=$_POST['consultaMon']." para ".$mon->getNombre()  ;
 	$email=$user->getEmail();
 	$mensaje=$mon->getNombre()."<br>".$_POST['des'];
-    Utilidades::enviarEmail($email,$asunto,$mensaje,$mon->getEmail());
+    $ok=Utilidades::enviarEmail('zuriken@hotmail.com',$asunto,$mensaje,$email);
+
+    if($ok){
+         $msg="EMAIL ENVIADO";
+  	   $clase="btn btn-success";
+    }else{
+    	$msg="EMAIL FALLO EN EL ENVIO";
+  	   $clase="btn btn-outline-danger";
+  	   }
 
 }
 
  ?>
 
 <div class="container-fluid" id="cuerpo">
+	 <?php 
+        if($msg!=""){
+     	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msg<span></div>";
+        }
+
+    ?>	
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>?op=contacto" method="post">
    <div class="row pt-5">
       

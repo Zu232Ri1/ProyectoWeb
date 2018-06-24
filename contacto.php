@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" id="cuerpo">
   <form action="<?php echo $_SERVER['PHP_SELF']?>?op=contacto" method="post">
    <div class="row pt-5">
       
@@ -24,6 +24,7 @@
 						<option value="Perdidad grasa" selected>Perdida de grasa</option>
 						<option value="Tonificaión">Tonificaión muscular</option>
 						<option value="Rendimiento">Rendimiento</option>
+						<option value="Comentario">Comentario</option>
 						<option value="Otros">Otros</option>
 					</select>
 			 </div>
@@ -58,8 +59,17 @@ if(count($_POST)!=0){
 	// var_dump($array);
 	 if($array['success']){
 
+       $nombre=$_POST['nombre'];
+       $email=$_POST['email'];
+       $mensaje=$_POST['mensaje'];
+       $asunto='Hola soy '.$nombre.' '.$_POST['opc'];
+	 	$ok=Utilidades::enviarEmail('zuriken@hotmail.com',$asunto,$mensaje,$email);
+	 	if($ok){
 
-	 	
+	 		 echo "<div class='row mb-5 btn  btn-success' ><div class='col-12'> Mensaje enviado</div></div>";
+	 		}else{
+	 			 echo "<div class='row mb-5 btn btn-danger' ><div class='col-12'> Mensaje No enviado</div></div>";
+	 		}
 	  
 	 }else{
 	    echo "<div class='row mb-5 btn btn-danger' ><div class='col-12'> Mensaje No enviado</div></div>";

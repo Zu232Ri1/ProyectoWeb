@@ -1,6 +1,6 @@
  $(document).ready(function(){
 
-          var ventana_ancho = $(window).width();
+      var ventana_ancho = $(window).width();
 		  var ventana_alto = $(window).height();
 	     //alert(ventana_ancho);
 	     //alert(ventana_alto);

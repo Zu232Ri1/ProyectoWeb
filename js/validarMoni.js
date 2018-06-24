@@ -1,5 +1,6 @@
 window.onload=function (argument) {
    	  	document.getElementById("formMoni").addEventListener("submit", validarMoni);
+       
    	  }
 
    	  function validarMoni (e) {

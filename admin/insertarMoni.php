@@ -76,11 +76,11 @@ if(isset($_POST['btnInsertarMoni'])){
 		     
 		      <div class="form-group">
 				<label for="nombre">Nombre</label><span style="color: red;">(*)</span>
-				<input type="text" class="form-control" id="nombre" name="nombre" required="true" pattern="[A-Za-z]{3,20}" >
+				<input type="text" class="form-control" id="nombre" name="nombre" required="true" pattern="[A-Za-z]{4-16}" >
 			 </div>
 			 <div class="form-group">
 				<label for="apelli">Apellido</label><span style="color: red;">(*)</span>
-				<input type="text" class="form-control" id="apelli" name="apelli" required="true" pattern="[A-Za-z]{3,20}" >
+				<input type="text" class="form-control" id="apelli" name="apelli" required="true" pattern="[A-Za-z]{4-16}" >
 			</div>
 			<!--<div class="form-group">
 				<label for="calle">Calle</label>

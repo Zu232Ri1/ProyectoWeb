@@ -37,11 +37,11 @@ if(isset($_POST['enviarProgresoInsertar'])){
 		     
 		      <div class="form-group">
 				<label for="peso">Peso</label>
-				<input type="text" class="form-control" placeholder="00.0"  id="peso" name="peso" pattern="^[0-9]+([.][0-9]+)?$" />
+				<input type="text" class="form-control" placeholder="00.0"  id="peso" name="peso" pattern="^[0-9]+([.][0-9]+)?$" required="true" />
 			 </div>
 			<div class="form-group">
 				<label for="estat">Estatura</label>
-				<input type="text" class="form-control" placeholder="00.0"  id="estat" name="estat" pattern="^[0-9]+([.][0-9]+)?$" />
+				<input type="text" class="form-control" placeholder="00.0"  id="estat" name="estat" pattern="^[0-9]+([.][0-9]+)?$" required />
 			</div>
 			<div class="form-group">
 				<label for="edad">Edad</label>

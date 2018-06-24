@@ -113,6 +113,7 @@ class ModeloEjercicios {
              $fotoRuta=$o->getFotoRuta();
              $descripcion=$o->getDescripcion();
              $idMusculo=$o->getIdMusculo();
+           //  echo $fotoRuta;
              $sql="INSERT INTO ejercicio (nombre,descripcion,id_musculo,fotoRuta) VALUES (?,?,?,?)";
              $consulta=$conexion->prepare($sql);
              $consulta->bind_param('ssss',$nombre,$descripcion,$idMusculo,$fotoRuta);
@@ -144,7 +145,7 @@ class ModeloEjercicios {
              $descripcion=$o->getDescripcion();
              $idMusculo=$o->getIdMusculo();
              $id=$o->getId();
-            
+            //echo $fotoRuta;
              if($fotoRuta!=null){
                  $sql="UPDATE ejercicio SET  nombre=?,descripcion=?,id_musculo=?,fotoRuta=? WHERE id=?";
                  $consulta=$conexion->prepare($sql);

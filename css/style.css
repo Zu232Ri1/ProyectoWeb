@@ -24,8 +24,14 @@ body{
   display:flex;
    flex-direction:column;
 }
-#obligatorio.obligatorio{
-	color:red;
+div.modal-body div.form-group  input[type=submit]{
+	background-color:#7FB5B5;
+	color:white;
+	 border:none;
+	 border-radius: 2px;
+	 text-transform: uppercase;
+	 padding: 0.5em;
+
 }
 div#cuerpo.container-fluid{
 	   /*background-color:red;*/
@@ -56,7 +62,7 @@ footer>div>div:nth-child(2){
 /*****************************LOGIN*****************************************/
 #login{
   height:100vh;
-  background-color:#cff;
+  background-color:#7FB5B5;
 }
 
 
@@ -174,7 +180,7 @@ footer>div>div:nth-child(2){
 }
 /************EN LOS ENLACES DEL MENU******************/
 .nav-link:hover{
-  background-color: rgb(228, 104, 71);
+  background-color: rgb(127, 181, 181);
   color: ghostwhite !important;
 }
 /************IMAGEN DE FONDO**************************/

@@ -6,7 +6,7 @@ if(isset($_POST['btnInsertarEjerciciosTablaRutina'])){
    $idSemana=$_POST['idSemana'];
    $dni=$_POST['dni'];
    $existeTablaUsu =ControladorTabla::existeUsuarioTabla($dni,$idSemana);
-   echo $existeTablaUsu;
+   //echo $existeTablaUsu;
    if(!$existeTablaUsu){
    $ejercicios=$_POST['checkejer'];
    $tabla = new Tabla();
@@ -132,7 +132,7 @@ if(count($ejerciciosInsertados)%2==0){
   					 
   				 </div>
   				  <div class="form-group">
-  		   		  	<input type="submit"  value="enviar" name="enviarRepeticones">
+  		   		  	<input type="submit"   value="enviar" name="enviarRepeticones">
   				  </div>
             </form>		 
                  
@@ -155,7 +155,9 @@ if(count($ejerciciosInsertados)%2==0){
      	echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msgT<span></div>";
     	 }
       ?>
+      <?php if($msgT==""){?>
 		  <h1>Dia de la semana</h1>
+    <?php } ?>
 		<div class="row pt-5">
             
 			<div class="col-12 col-md-6">
@@ -183,10 +185,10 @@ if(count($ejerciciosInsertados)%2==0){
 					  <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">
 					       	    <p><?php echo $ejerciciosInsertados[$i]->getNombre();	 ?></p>
-	                            <p>Series <?php 	if($ejerciciosInsertados[$i]->getRepeticiones()!=null) 
+	                            <p>Repeticiones <?php 	if($ejerciciosInsertados[$i]->getRepeticiones()!=null) 
 	                                                echo $ejerciciosInsertados[$i]->getRepeticiones();
 	                                                 else echo 0 ;?></p>
-								<p>Repeticiones  <?php 	if($ejerciciosInsertados[$i]->getSerie()!=null) echo $ejerciciosInsertados[$i]->getSerie(); else echo 0 ; ?></p>
+								<p>Series  <?php 	if($ejerciciosInsertados[$i]->getSerie()!=null) echo $ejerciciosInsertados[$i]->getSerie(); else echo 0 ; ?></p>
 								
 							</div>
 						
@@ -225,8 +227,8 @@ if(count($ejerciciosInsertados)%2==0){
 					   <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">
 					       	<p><?php echo $ejerciciosInsertados[$j]->getNombre();	 ?></p>
-	                            <p>Series <?php  if($ejerciciosInsertados[$j]->getRepeticiones()!=null)echo $ejerciciosInsertados[$j]->getRepeticiones();else echo 0 ; ?></p>
-								<p>Repeticiones  <?php 	if($ejerciciosInsertados[$j]->getSerie()!=null) echo $ejerciciosInsertados[$j]->getSeries(); else echo 0 ;?></p>
+	                            <p>Repeticones <?php  if($ejerciciosInsertados[$j]->getRepeticiones()!=null)echo $ejerciciosInsertados[$j]->getRepeticiones();else echo 0 ; ?></p>
+								<p>Series  <?php 	if($ejerciciosInsertados[$j]->getSerie()!=null) echo $ejerciciosInsertados[$j]->getSeries(); else echo 0 ;?></p>
 								
 							</div>
 						
@@ -245,13 +247,15 @@ if(count($ejerciciosInsertados)%2==0){
 		</div>
 		
   </div>
-  
+   <?php if($msgT=="")
+       {
+      ?>
      <div class="d-flex justify-content-between">
 	    <a href="#" ><span class="fa fa-angle-double-left fa-3x"></span></a>
 		<a href="#" ><span class="fa fa-angle-double-right fa-3x"></span></a>
 	 
 	 </div>
-  
+  <?php  } ?>
  
 
 </div>   

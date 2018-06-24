@@ -2,23 +2,34 @@
 
 require("clases/ControladorClase.php");
 
-$clase=ControladorClase::getAll();
-
-//var_dump($clase);
+$clases=ControladorClase::getAll();
+$msgC="";
+if(count($clases)==0){
+   $msgC="NO HAY CLASES";
+   $clase="btn btn-outline-danger";
+}else if($clases==null){
+   $msgC="FALLO EN BD CLASES";
+   $clase="btn btn-outline-danger";
+}
  ?>
-<div class="container-fluid">
+<div class="container-fluid" id="cuerpo">
    <h1 class="text-center">CLASES</h1>
    <div class="row pt-5">     
 		<div class="container">
               <?php 	
+               if($msgC!=""){
+               echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msgC<span></div>";
+               }
                     $ruta="img/clase1.jpg";
 
-                
-                 foreach ($clase as $key => $o) {
+                if($msgC==""){
+                 foreach ($clases as $key => $o) {
                      if($o->getFotoRuta()!==null){
-                     	 echo $o->getFotoRuta();
-                     	 $ruta=$o->getFotoRuta();
+                     	// echo $o->getFotoRuta();
+                     	 $ruta=substr($o->getFotoRuta(),3);
                 	         
+                      }else{
+                         $ruta="img/clase1.jpg";
                       }
 
 
@@ -32,26 +43,23 @@ $clase=ControladorClase::getAll();
 
 
                   }
+                    echo "<div class='d-flex  justify-content-center'>
+                          <ul class='pagination'>
+              <li class='page-item'><a class='page-link' href='#'>Previous</a></li>
+              <li class='page-item'><a class='page-link' href='#'>1</a></li>
+              <li class='page-item'><a class='page-link' href='#'>2</a></li>
+              <li class='page-item'><a class='page-link' href='#'>3</a></li>
+              <li class='page-item'><a class='page-link' href='#'>Next</a></li>
+               </ul>
+                </div>";
+                }
 
                ?>
 
 
-		      <div>
-			     <img src="img/clase1.jpg" alt='clase' />
-				 <p class="text-center">
-					<a href="#"> Leer mas.. </a>
-				 </p>
-			  </div>
+		    
 			  
-			  <div class="d-flex  justify-content-center">
-                 <ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			    </ul>
-			</div>	
+			 
 		</div>
              	 
 			
