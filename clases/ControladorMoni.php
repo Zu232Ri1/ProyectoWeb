@@ -55,10 +55,18 @@ class ControladorMoni{
 		return false;
 	}
 
-	public static function editMoni($o){
+	public static function editMoni($o,$fotoOld){
 
 		$modelo=new ModeloMoni();
         
+        //Borro imagen anterior
+		if($fotoOld!=null and $o->getFotoRuta()!=null){
+
+			//echo "Foto antigua ruta ".$fotoOld."</br> foto nueva ";
+
+             unlink($fotoOld);
+		}
+		
 		//Subo imagen
         $directorio="../img/monitor/";
         //echo var_dump($o->getFotoRuta());

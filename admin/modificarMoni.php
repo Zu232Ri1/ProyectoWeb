@@ -7,6 +7,7 @@ $id=$_GET['id'];
 $i=ControladorMoni::getMoni($id);
 //var_dump($i);
 $msg="";
+$fotoOld = $i->getFotoRuta();
 
 $dni=substr($i->getDniEmpleado(), 0,8)."-".substr($i->getDniEmpleado(), 8,9);
 if(isset($_POST['btnModificarMoni'])){
@@ -41,7 +42,7 @@ if(isset($_POST['btnModificarMoni'])){
     
    //var_dump($o);
 
-   $ok=ControladorMoni::editMoni($o);
+   $ok=ControladorMoni::editMoni($o,$fotoOld);
  if($ok){
     	$msg="MONITOR MODIFICADO";
   	   $clase="btn btn-success";
@@ -54,7 +55,7 @@ if(isset($_POST['btnModificarMoni'])){
 
 	
 }
-
+$i=ControladorMoni::getMoni($id);
 $nombre=$i->getNombre();
 $apellido=$i->getApellido();
 $telefono=$i->getTelefono();
@@ -87,12 +88,12 @@ $edad=$i->getFechaNacimiento();
 		     
 		      <div class="form-group">
 				<label for="nombre">Nombre</label><span style="color: red;">(*)</span>
-				<input type="text" class="form-control" id="nombre" name="nombre" value="<?php 	echo $nombre; ?>" required="true" pattern="[A-Za-z]{3,20}" >
+				<input type="text" class="form-control" id="nombre" name="nombre" value="<?php 	echo $nombre; ?>" required="true" pattern="[A-Za-z]{4-16}" >
 			 </div>
 			 <div class="form-group">
 				<label for="apelli">Apellido</label><span style="color: red;">(*)</span>
 				<input type="text" class="form-control" id="apelli" name="apelli"
-				value="<?php 	echo $apellido; ?>" required="true" pattern="[A-Za-z]{3,20}" >
+				value="<?php 	echo $apellido; ?>" required="true" pattern="[A-Za-z]{4-16}" >
 			</div>
 			<!--<div class="form-group">
 				<label for="calle">Calle</label>

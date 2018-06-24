@@ -3,6 +3,8 @@ include('../clases/Utilidades.php');
 include('../clases/ControladorEjercicio.php');
 $id=$_GET['id'];
 $msg="";
+$o=ControladorEjercicio::getEjercicioId($id);
+$fotoOld= $o->getFotoRuta();
 if(isset($_POST['enviarEjrcicioModificar'])){
     
     $o=new Ejercicios();
@@ -24,7 +26,7 @@ if(isset($_POST['enviarEjrcicioModificar'])){
     }             	
                  	
                  	
-$ok=ControladorEjercicio::editEjercicio($o);
+$ok=ControladorEjercicio::editEjercicio($o,$fotoOld);
  if($ok){
     	$msg="EJERCICIO MODIFICADO";
   	   $clase="btn btn-success";
@@ -33,7 +35,7 @@ $ok=ControladorEjercicio::editEjercicio($o);
   	   $clase="btn btn-outline-danger";
     }
 }
-$o=ControladorEjercicio::getEjercicioId($id);
+
 $nombre =$o->getNombre();
 $descripcion=$o->getDescripcion();
 $idMuscculo=$o->getIdMusculo();

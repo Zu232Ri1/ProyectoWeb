@@ -13,7 +13,7 @@ $tarifa=$i->getTarifa();
 $mon=$i->getDniEmpleado();
 $idSala=$i->getIdSala();
 $id=$i->getId();
-
+$fotoOld = $i->getFotoRuta();
 
 if(isset($_POST['btnModificarClase'])){
        $o=new Actividades(); 
@@ -35,7 +35,7 @@ if(isset($_POST['btnModificarClase'])){
    	    $o->setFotoRuta(null);	
     }
 
-      $ok=ControladorClase::editClase($o);
+      $ok=ControladorClase::editClase($o,$fotoOld);
    		 if($ok){
     	$msg="CLASE MODIFICADO";
   	   $clase="btn btn-success";

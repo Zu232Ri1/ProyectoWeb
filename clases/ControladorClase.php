@@ -35,7 +35,7 @@ class ControladorClase{
         $directorio="../img/clases/";
        // echo var_dump($o->getFotoRuta());
 		if($o->getFotoRuta()!=null){
-			echo "No es nullo";
+			//echo "No es nullo";
 			$resultado=Utilidades::subirImagen($o->getFotoRuta(),$directorio);
 
 			if($resultado===1){              
@@ -52,9 +52,16 @@ class ControladorClase{
 		$modelo=new ModeloActi();
 		return $modelo->setActividad($o);
 	}
-	public static function editClase($o){
+	public static function editClase($o,$fotoOld){
 		$modelo=new ModeloActi();
         
+        //Borro imagen anterior
+		if($fotoOld!=null and $o->getFotoRuta()!=null){
+
+			//echo "Foto antigua ruta ".$fotoOld."</br> foto nueva ";
+
+             unlink($fotoOld);
+		}
         //Subo imagen
         $directorio="../img/clases/";
        // echo var_dump($o->getFotoRuta());
