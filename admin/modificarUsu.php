@@ -4,7 +4,7 @@ include('../clases/Utilidades.php');
 $id=$_GET['id'];
 $usus=ControladorUsu::getUsu($id);
 $msg='';
-
+$fotoOld = $usus->getFotoRuta();
 
 $dni=substr($usus->getDni(), 0,8)."-".substr($usus->getDni(), 8,9);
 if(isset($_POST['btnModificarUsu'])){
@@ -23,9 +23,9 @@ if(isset($_POST['btnModificarUsu'])){
     $o->setMonitor($_POST['mon']);
     $o->setIdActividad($_POST['clase']);
     if(isset($_FILES['imagen'])){
-    	echo "Existe ";
+    	//echo "Existe ";
     	if(empty($_FILES['imagen']['name'])){
-             echo "vacio ruta";
+             //echo "vacio ruta";
               $o->setFotoRuta(null);
     	}else{
     		$o->setFotoRuta($_FILES['imagen']);
@@ -36,7 +36,7 @@ if(isset($_POST['btnModificarUsu'])){
     }
     
     // var_dump($o);
-     $ok=ControladorUsu::editUsuario($o);
+     $ok=ControladorUsu::editUsuario($o,$fotoOld);
 
       if($ok){
     	$msg="USUARIO MODIFICADO";
@@ -81,11 +81,11 @@ $actividad=$usus->getIdActividad();
 		     
 		      <div class="form-group">
 				<label for="nombre">Nombre</label><span style="color: red;">(*)</span>
-				<input type="text" class="form-control" value="<?php echo $nombre; ?>" id="nombre" name="nombre" required="true" pattern="[A-Za-z]{3,20}" />
+				<input type="text" class="form-control" value="<?php echo $nombre; ?>" id="nombre" name="nombre" required="true" pattern="[A-Za-z]{4-16}" />
 			 </div>
 			 <div class="form-group">
 				<label for="apelli">Apellido</label><span style="color: red;">(*)</span>
-				<input type="text" class="form-control" id="apelli" name="apelli" value="<?php echo $apellido; ?>" required="true" pattern="[A-Za-z]{3,20}" />
+				<input type="text" class="form-control" id="apelli" name="apelli" value="<?php echo $apellido; ?>" required="true" pattern="[A-Za-z]{4-16}" />
 			</div>
 			<div class="form-group">
 				<label for="dni">DNI</label>

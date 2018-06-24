@@ -66,15 +66,22 @@ class ControladorUsu{
 
           return false;
 	}
-	public static function editUsuario($o){
+	public static function editUsuario($o,$fotoOld){
 
 		$modelo=new ModeloUsu();
+		//Borro imagen anterior
+		if($fotoOld!=null and $o->getFotoRuta()!=null){
+
+			//echo "Foto antigua ruta ".$fotoOld."</br> foto nueva ";
+
+             unlink($fotoOld);
+		}
         
 		//Subo imagen
         $directorio="../img/user/";
-        echo var_dump($o->getFotoRuta());
+       // echo var_dump($o->getFotoRuta());
 		if($o->getFotoRuta()!=null){
-			echo "No es nullo";
+			//echo "No es nullo";
 			$resultado=Utilidades::subirImagen($o->getFotoRuta(),$directorio);
 
 			if($resultado===1){              

@@ -28,7 +28,7 @@ class ControladorEjercicio{
 
 			if($resultado===1){              
                 $directorio.=time()."-".$o->getFotoRuta()['name'];
-               // echo "Imagen Subida".$directorio;
+               //echo "Imagen Subida".$directorio;
                 $o->setFotoRuta($directorio);
 			}
 
@@ -36,8 +36,18 @@ class ControladorEjercicio{
 		}
 		return $modelo->setEjercicio($o);
 	}
-	public static function editEjercicio($o){
+	public static function editEjercicio($o,$fotoOld){
+
+
 		$modelo = new ModeloEjercicios();
+
+		//Borro imagen anterior
+		if($fotoOld!=null and $o->getFotoRuta()!=null){
+
+			//echo "Foto antigua ruta ".$fotoOld."</br> foto nueva ";
+
+             unlink($fotoOld);
+		}
 		  //Subo imagen
         $directorio="../img/ejercicios/";
 		if($o->getFotoRuta()!=null){
