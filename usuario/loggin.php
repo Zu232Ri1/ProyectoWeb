@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('../clases/Conexion.php')
+require('../clases/Conexion.php');
 require('../clases/Utilidades.php');
 require_once('../clases/ControlerLogin.php');
 if(isset($_GET['id']) and isset($_GET['tipo']) and isset($_GET['log'])){

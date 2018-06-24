@@ -16,7 +16,7 @@ class ModeloProgreso{
              $dniC=$o->getDniCliente();
              var_dump($o);
              $sql="INSERT INTO seguimiento(fechaSeguimiento,estatura,medidas,peso,indice_grasa,dni_cliente)VALUES(?,?,?,?,?,?)";
-             echo $sql;
+             //echo $sql;
              $consulta=$conexion->prepare($sql);
              $consulta->bind_param('sdsdds',$fechaS,$estatura,$medidas,$peso,$indice,$dniC);
              
@@ -69,7 +69,7 @@ class ModeloProgreso{
 
             }
             Conexion::desconectarBD($conexion);
-            return $o;
+            return $progreso;//erro al mandar un objeto en la peticon array vacio en succes de ajax
 
 
    }

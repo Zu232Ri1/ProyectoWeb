@@ -26,7 +26,12 @@ if(isset($_POST['enviarRenovar'])){
 }
 
 $usuario=ControladorUsu::getAll();
-
+//$usuario=array();
+$msg="";
+if(count($usuario)==0){
+       $msg="NO HAY USUARIOS QUE MOSTRAR";
+  	   $clase="btn btn-outline-danger";
+}
 if(count($usuario)%2==0){
   // echo "Par";
    $usuMitad=count($usuario)/2;
@@ -43,12 +48,7 @@ if(count($usuario)%2==0){
  ?>
  <div class="container-fluid" id="cuerpo">
    
-         <?php 
-        if($msg!=""){
-     	       	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msg<span></div>";
-        }
-
-    ?>	
+        
 		
 
         <!-- The Modal -->
@@ -133,7 +133,12 @@ if(count($usuario)%2==0){
                				
 		</div>
 		
+ <?php 
+        if($msg!=""){
+     	       	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msg<span></div>";
+        }
 
+    ?>	
    <div class="row pt-5">
       
 		<div class="col-12 col-md-6">
@@ -159,7 +164,7 @@ if(count($usuario)%2==0){
 				  <div class="row mb-2">
 				    <div class="col-12 col-md-6">
 						<div class="card">
-								<img class="card-img-top rounded-circle" src="<?php echo $ruta; ?>" alt="Card image">
+								<img class="card-img-top rounded-circle" src="<?php echo $ruta; ?>" alt="Gimnasio low cost">
 								<div class="card-body">
 									<h4 class="card-title"><?php echo $usuario[$i]->getNombre();	 ?></h4>
 									<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -180,7 +185,7 @@ if(count($usuario)%2==0){
 						   <div>
 						   	     <?php 
                                     if($fechaR>=$fechaHoy){
-                                          $activate="style='visibility: hidden;'";
+                                          $activate="style='display: none;'";
                                     }else{
                                     	$activate="";
                                     }
@@ -216,7 +221,7 @@ if(count($usuario)%2==0){
 				   <div class="row mb-2">
 				    <div class="col-12 col-md-6">
 						<div class="card">
-								<img class="card-img-top rounded-circle" src="<?php 	echo $ruta; ?>" alt="Card image">
+								<img class="card-img-top rounded-circle" src="<?php 	echo $ruta; ?>" alt="Gimnasio low cost">
 								<div class="card-body">
 									<h4 class="card-title"><?php 	echo $usuario[$j]->getNombre(); ?></h4>
 									<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -238,7 +243,7 @@ if(count($usuario)%2==0){
 						   	      <?php 
 						   	        //echo $fechaR." ".$fechaHoy;
                                     if($fechaR>=$fechaHoy){
-                                        $activate="style='visibility: hidden;'";
+                                        $activate="style='display: none;'";
                                        // echo "entrando";
                                     }else{
                                     	$activate="";
@@ -260,13 +265,13 @@ if(count($usuario)%2==0){
 		</div>
 		
   </div>
-  
+  <?php if($msg==""){ ?>
      <div class="d-flex justify-content-between">
 	    <a href="#" ><span class="fa fa-angle-double-left fa-3x"></span></a>
 		<a href="#" ><span class="fa fa-angle-double-right fa-3x"></span></a>
 	 
 	 </div>
   
- 
+ <?php } ?>
 
 </div> 

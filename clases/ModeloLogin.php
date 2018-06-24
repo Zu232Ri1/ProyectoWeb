@@ -57,11 +57,11 @@ class ModeloLogin{
 		          }
             $consulta->store_result();
             $fila=$consulta->num_rows;
-            echo $fila;
+           // echo $fila;
              if($fila>0){
 		   	  $consulta->bind_result($dni_empleado,$tipo,$pass);				
 			   while ($consulta->fetch()) {
-				echo $dni_empleado." ".$tipo;
+				//echo $dni_empleado." ".$tipo;
 				 $o=new Empleado();
 				 $o->setDniEmpleado($dni_empleado);
 				 $o->setTipo($tipo);
@@ -93,7 +93,7 @@ class ModeloLogin{
 
         if($tipo=="user"){
              $sql='SELECT pass FROM cliente WHERE dni=?';
-           echo $sql;
+          // echo $sql;
             $consulta=$conexion->prepare($sql);
 		    $consulta->bind_param('s',$id);
               if (!$consulta->execute()) { 
@@ -104,7 +104,7 @@ class ModeloLogin{
 		          }
             $consulta->store_result();
             $fila=$consulta->num_rows;
-            echo $fila;
+            //echo $fila;
              if($fila>0){
 
 		   	  $consulta->bind_result($pass);

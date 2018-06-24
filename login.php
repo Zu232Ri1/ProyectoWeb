@@ -35,19 +35,19 @@ if(isset($_GET['op'])){
         	if($clase==='Empleado'){
                    if($o->getTipo()==="admin"){
                          echo "Redirige a admin";
-                         $id_cifrado=Utilidades::encriptar($o->getDniEmpleado());
+                         $id_cifrado=$o->getDniEmpleado();
                          //no le gusta las minusculas
-                         $tipo=Utilidades::encriptar("ADMIN");
+                         $tipo="admin";
                          $log=crypt($o->getPass());
-                         echo $tipo."<br>".$id_cifrado;
+                         //echo $tipo."<br>".$id_cifrado;
                         
                        header("Location:admin/loggin.php?tipo=$tipo&id=$id_cifrado&log=$log");
                    }else{
-                        $id_cifrado=Utilidades::encriptar($o->getDniEmpleado());
+                        $id_cifrado=$o->getDniEmpleado();
                          //no le gusta las minusculas
                          $tipo="monitor";
                          $log=crypt($o->getPass());
-                         echo $tipo."<br>".$id_cifrado;
+                         //echo $tipo."<br>".$id_cifrado;
                         
                          header("Location:monitor/loggin.php?tipo=$tipo&id=$id_cifrado&log=$log");
                    }

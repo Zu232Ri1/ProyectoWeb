@@ -186,4 +186,5 @@ if(count($ejercicios)%2==0){
   <?php } ?>
  
 <script src="../js/calendario.js" ></script>
+
 </div>   

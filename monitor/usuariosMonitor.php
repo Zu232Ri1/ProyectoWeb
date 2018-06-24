@@ -3,14 +3,18 @@ include('../clases/Utilidades.php');
 include('../clases/ControladorMoni.php');
 include('../clases/ControladorTabla.php');
 $idMonitor=$_SESSION['id'];
-echo $idMonitor;
+//echo $idMonitor;
 /*$idMonitor='37984523T';*/
 $monitor=ControladorMoni::getMoni($idMonitor);
 $userMoni=$monitor->getListaUsuarios();
-
+$msgU="";
 /*var_dump($userMoni);
 var_dump($monitor);*/
-
+//$userMoni=array();
+if(count($userMoni)==0){
+	$msgU="EL MONITOR NO TIENE USUARIOS A SU CARGO";
+    $clase="btn btn-outline-danger";
+}
 
 if(count($userMoni)%2==0){
    //echo "Par";
@@ -30,7 +34,7 @@ if($monitor->getFotoRuta()!=null){
 }else{
 	$fotoMonitor = "../img/user.png";
 }
-$msgU="";
+
 if(isset($_GET['msg'])){
 	$msg=$_GET['msg'];
 
@@ -187,7 +191,7 @@ if(isset($_POST['borraTabla'])){
 		<div class="d-flex justify-content-center pt-5">
 		        
 		     	<div>
-				   <img class="rounded-circle" src="<?php echo $fotoMonitor; ?>" alt="Monitor gimnasio ">
+				   <img class="rounded-circle" src="<?php echo $fotoMonitor; ?>" alt="Gimnasio low cost">
 				    <p class="text-center"><?php echo $monitor->getNombre() ;?></p>
                 </div>	
 				
@@ -197,7 +201,7 @@ if(isset($_POST['borraTabla'])){
 		
    <?php 
      if($msgU!=""){
-     	 echo "<div  class='d-flex justify-content-center m-3'><span class='$clase text-center'>$msgU<span></div>";
+     	 echo "<div  class='d-flex justify-content-center m-5'><span class='$clase text-center'>$msgU<span></div>";
      }
 
     ?>	
@@ -225,7 +229,7 @@ if(isset($_POST['borraTabla'])){
 				  <div class="row mb-2">
 				    <div class="col-12 col-md-6">
 						<div class="card">
-								<img class="card-img-top rounded-circle" src="<?php echo $ruta; ?>" alt="Card image">
+								<img class="card-img-top rounded-circle" src="<?php echo $ruta; ?>" alt="Gimnasio low cost">
 								<div class="card-body">
 									<h4 class="card-title"><?php echo $userMoni[$i]->getNombre();	 ?></h4>
 									<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -281,7 +285,7 @@ if(isset($_POST['borraTabla'])){
                        <div class="row mb-2">
 				    <div class="col-12 col-md-6">
 						<div class="card">
-								<img class="card-img-top rounded-circle" src="<?php echo $ruta; ?>" alt="Card image">
+								<img class="card-img-top rounded-circle" src="<?php echo $ruta; ?>" alt="Gimnasio low cost">
 								<div class="card-body">
 									<h4 class="card-title"><?php echo $userMoni[$j]->getNombre();	 ?></h4>
 									<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
@@ -304,7 +308,7 @@ if(isset($_POST['borraTabla'])){
 							   <div class="col-12 col-lg-8">
 								   <div class="d-flex flex-column align-self-baseline ">
 										 <a href="" class="btn btn-primary mt-3 edit2" data-toggle="modal" data-target="#myModal2" id="<?php 	echo $id; ?>">Tabla<span class="fa fa-times" ></span></a>
-										  <a href="#" class="btn btn-primary mt-3" >Avance</a>
+										  <a href="<?php echo $_SERVER['PHP_SELF'] ?>?op=insertarProgreso&id=<?php echo $id ?>" class="btn btn-primary mt-3" >Avance</a>
 										  <a href="&id<?php echo $id; ?>" id="<?php echo $id; ?>" class="btn btn-primary mt-3 edit" data-toggle="modal" data-target="#myModal">Tabla<span class="fa fa-plus"></span></a>
 										
 								   </div>
@@ -322,13 +326,13 @@ if(isset($_POST['borraTabla'])){
 		</div>
 		
   </div>
-  
+  <?php if($msgU==""){ ?>
      <div class="d-flex justify-content-between">
 	    <a href="#" ><span class="fa fa-angle-double-left fa-3x"></span></a>
 		<a href="#" ><span class="fa fa-angle-double-right fa-3x"></span></a>
 	 
 	 </div>
-  
+  <?php } ?>
  
 
 </div> 

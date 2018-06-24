@@ -3,6 +3,8 @@ include('../clases/ControladorTabla.php');
 $dni="";
 $disemana="";
 $musculo="";
+
+
 if(isset($_POST['enviarTabla'])){
 $dni = $_POST['dniCliente'];
 $disemana=$_POST['semana'];
@@ -45,7 +47,7 @@ if(!$existe){
 	  	           $id = $value->getId();
 	              echo "<div class='form-check'>
 			              <label class='form-check-label'>
-			              <input type='checkbox' class='form-check-input' value='$id' name='checkejer[]'>$nombre $musculo
+			              <input type='checkbox' class='form-check-input' value='$id' name='checkejer[]' id='checkEjer'>$nombre $musculo
 			              </label>
 			              <p class='descripcion'>$descr</p>
 		                </div>";

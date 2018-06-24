@@ -1,5 +1,6 @@
 window.onload=function (argument) {
    	  	document.getElementById("formUsuario").addEventListener("submit", validarUsu);
+        
    	  }
 
 

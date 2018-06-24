@@ -2,8 +2,8 @@
 include('../clases/Utilidades.php');
 include('../clases/ControladorEjercicio.php');
 include('../clases/ControladorMoni.php');
-$idMonitor=$_SERVER['id'];
-echo $idMonitor;
+$idMonitor=$_SESSION['id'];
+//echo $idMonitor;
 /*$idMonitor='37984523T';*/
 $monitor=ControladorMoni::getMoni($idMonitor);
 $ejercicios=ControladorEjercicio::getAll();
@@ -40,7 +40,7 @@ if($monitor->getFotoRuta()!=null){
 		</div>
 		<div class="d-flex justify-content-center pt-5">
 		     	<div class="ml-5">
-				   <img class="rounded-circle" src="<?php echo $fotoMonitor; ?>" alt="Monitor gimnasio barato">
+				   <img class="rounded-circle" src="<?php echo $fotoMonitor; ?>" alt="Gimnasio low cost">
 				    <p class="text-center"><?php echo $monitor->getNombre() ?></p>
                 </div>	
 				
@@ -115,7 +115,7 @@ if($monitor->getFotoRuta()!=null){
                    ?>
 			       <div class="row">
 				      <div class='col-12 col-md-6'>
-					     <img src="../img/musculo3.png" alt='musculo' class="round-circle"/>
+					     <img src="<?php echo $ruta; ?>" alt='Gimnasio low cost' class="round-circle"/>
 					  </div>
 					  <div class='col-12 col-md-6'>
 					       <div class="d-flex justify-content-between">

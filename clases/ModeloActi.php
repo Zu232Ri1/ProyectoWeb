@@ -123,7 +123,7 @@ class ModeloActi{
    }
 
     public function existe($o){
-            var_dump($o);
+            //var_dump($o);
              $conexion=Conexion::conectarBD();
              $id_sala=$o->getIdSala();
              $horaFin=$o->gethoraFin();
